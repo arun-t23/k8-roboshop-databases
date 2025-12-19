@@ -20,10 +20,10 @@ spec:
     project: roboshop
     component: mysql
     tier: db
-ports:
-  - protocol: TCP
-    port: 3306
-    targetPort: 3306
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
 ---
 
 ### Headless SErvice
@@ -31,7 +31,7 @@ ports:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mysql-headless
   namespace: roboshop
 spec:
   clusterIP: None
@@ -39,10 +39,10 @@ spec:
     project: roboshop
     component: mysql
     tier: db
-ports:
-  - protocol: TCP
-    port: 3306
-    targetPort: 3306
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
 
 ---
 
@@ -81,12 +81,12 @@ spec:
 
     ### this is PVC
 
-    volumeClaimTemplates:
-    - metadata:
-        name: mysql
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "roboshop-ebs"
-        resources:
-          requests:
-            storage: 1Gi
+volumeClaimTemplates:
+- metadata:
+    name: mysql
+  spec:
+    accessModes: [ "ReadWriteOnce" ]
+    storageClassName: "roboshop-ebs"
+    resources:
+      requests:
+        storage: 1Gi
