@@ -63,7 +63,7 @@ spec:
       - name: redis
         image: redis:7.0
         volumeMounts:
-        - name: mongodb
+        - name: redis
           mountPath: /data
 
 ## This is PVC
