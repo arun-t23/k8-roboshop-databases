@@ -44,10 +44,6 @@ kind: StatefulSet
 metadata:
   name: redis
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: redis
-    tier: db
 spec:
   selector:
     matchLabels:
