@@ -41,31 +41,27 @@ kind: StatefulSet
 metadata:
   name: rabbitmq
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: rabbitmq
-    tier: db
 spec:
   selector:
     matchLabels:
       project: roboshop
       component: rabbitmq
       tier: db
-    serviceName: "rabbitmq-headless"
-    replicas: 2
-    template:
-      metadata:
-        labels:
-          project: roboshop
-          component: rabbitmq
-          tier: db
-      spec:
-        containers:
-        - name: rabbitmq
-          image: arunt98/rabbitmq:v1
-        volumeMounts:
-        - name: redis
-          mountPath: /data
+  serviceName: "rabbitmq-headless"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: rabbitmq
+        tier: db
+    spec:
+      containers:
+      - name: rabbitmq
+        image: arunt98/rabbitmq:v1
+      volumeMounts:
+      - name: rabbitmq
+        mountPath: /var/lib/rabbitmq
 
 ### this is PVC
 
