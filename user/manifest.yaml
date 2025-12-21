@@ -46,16 +46,14 @@ spec:
           httpGet:
             path: /health
             port: liveness-port
-            initialDelaySeconds: 1
-            periodSeconds: 10
+          initialDelaySeconds: 1
+          periodSeconds: 10
         livenessProbe:
           httpGet:
             path: /health
             port: liveness-port
-            initialDelaySeconds: 1
-            periodSeconds: 10
-        
-
+          initialDelaySeconds: 1
+          periodSeconds: 10
 
 
 ---
