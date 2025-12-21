@@ -14,7 +14,7 @@ kind: Deployment
 metadata:
   name: catalogue
   namespace: roboshop
-  metadata: 
+  labels:
     project: roboshop
     component: catalogue
     tier: backend
@@ -73,10 +73,10 @@ spec:
     project: roboshop
     component: catalogue
     tier: backend
-ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ---
 
 apiVersion: autoscaling/v2
