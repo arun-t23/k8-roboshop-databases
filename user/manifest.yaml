@@ -19,7 +19,7 @@ metadata:
     component: user
     tier: backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       project: roboshop
@@ -77,4 +77,28 @@ spec:
       targetPort: 8080
 
 ---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: user
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: user
+    tier: backend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: user
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 5 # 70 is the real value
 
