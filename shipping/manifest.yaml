@@ -3,10 +3,6 @@ kind: ConfigMap
 metadata:
   name: shipping
   namespace: roboshop
-  labels:
-    project: roboshop
-    component: shipping
-    tier: backend
 data:
   CART_ENDPOINT: "cart:8080"
   DB_HOST: "mysql"
